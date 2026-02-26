@@ -1,6 +1,6 @@
 # nyan-army-web
 
-Animated Nyan Cat SVG using the original cat artwork, displayed in a smaller centered scene over a full-page blue background.
+Small Nyan Cat animation crossing from left to right over a full-page blue background (`100vh`).
 
 ## Run locally
 
