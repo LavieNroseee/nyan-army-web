@@ -19,18 +19,27 @@
         position: absolute;
         left: 50%;
         width: 120px;
-        height: 420px;
-        transform: translate(-50%, -180px);
+        height: 430px;
+        transform: translate(-50%, -190px);
         animation: fly-vertical 7.2s linear infinite;
       }
 
-      .rainbow {
+      .rainbow-stack {
         position: absolute;
         left: 50%;
         bottom: 66px;
-        transform: translateX(-50%);
         width: 54px;
-        height: 270px;
+        transform: translateX(-50%);
+      }
+
+      .rainbow-stack.fade-1 { opacity: 0.45; }
+      .rainbow-stack.fade-2 { opacity: 0.22; }
+
+      .rainbow-piece {
+        position: absolute;
+        left: 0;
+        width: 54px;
+        height: 42px;
         background: linear-gradient(
           90deg,
           #ff1b00 0%, #ff1b00 16.66%,
@@ -40,11 +49,10 @@
           #008afc 66.67%, #008afc 83.33%,
           #6d3ffc 83.34%, #6d3ffc 100%
         );
-        animation: trail-jitter 0.42s linear infinite;
       }
 
-      .rainbow.fade-1 { height: 315px; opacity: 0.45; }
-      .rainbow.fade-2 { height: 360px; opacity: 0.22; }
+      .rainbow-piece.phase-a { animation: rainbow-sway 0.42s linear infinite; }
+      .rainbow-piece.phase-b { animation: rainbow-sway 0.42s linear -0.21s infinite; }
 
       .cat {
         position: absolute;
@@ -56,22 +64,52 @@
       }
 
       @keyframes fly-vertical {
-        from { transform: translate(-50%, -180px); }
-        to { transform: translate(-50%, calc(100vh + 80px)); }
+        from { transform: translate(-50%, -190px); }
+        to { transform: translate(-50%, calc(100vh + 90px)); }
       }
 
-      @keyframes trail-jitter {
-        0%, 49.99% { transform: translateX(-50%); }
-        50%, 100% { transform: translateX(calc(-50% - 4px)); }
+      @keyframes rainbow-sway {
+        0%, 49.99% { transform: translateX(0); }
+        50%, 100% { transform: translateX(-4px); }
       }
     </style>
   </head>
   <body>
     <main class="stage" aria-label="Nyan Cat vertical movement test with rainbow from feet">
       <div class="vertical-run">
-        <div class="rainbow fade-2" aria-hidden="true"></div>
-        <div class="rainbow fade-1" aria-hidden="true"></div>
-        <div class="rainbow" aria-hidden="true"></div>
+        <div class="rainbow-stack fade-2" aria-hidden="true">
+          <div class="rainbow-piece phase-a" style="bottom: 0"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 40px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 80px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 120px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 160px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 200px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 240px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 280px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 320px"></div>
+        </div>
+
+        <div class="rainbow-stack fade-1" aria-hidden="true">
+          <div class="rainbow-piece phase-a" style="bottom: 0"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 40px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 80px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 120px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 160px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 200px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 240px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 280px"></div>
+        </div>
+
+        <div class="rainbow-stack" aria-hidden="true">
+          <div class="rainbow-piece phase-a" style="bottom: 0"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 40px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 80px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 120px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 160px"></div>
+          <div class="rainbow-piece phase-b" style="bottom: 200px"></div>
+          <div class="rainbow-piece phase-a" style="bottom: 240px"></div>
+        </div>
+
         <img class="cat" src="nyan-cat-only.svg" alt="Nyan Cat" />
       </div>
     </main>
