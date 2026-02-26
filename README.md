@@ -1,6 +1,6 @@
 # nyan-army-web
 
-Small Nyan Cat + rainbow animation moving from left to right over a full-page blue background, with a longer trail and progressive fade behind the sprite.
+Small Nyan Cat + rainbow animation moving from left to right over a full-page blue background, with a longer fading trail and stars distributed across the page.
 
 ## Run locally
 
