@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyan Army Web</title>
+    <style>
+      * { box-sizing: border-box; }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        overflow: hidden;
+        background: #22497b;
+      }
+
+      .stage {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .stars {
+        position: absolute;
+        inset: 0;
+      }
+
+      .star {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        color: #d9f0ff;
+        animation: twinkle 1.8s steps(2, end) infinite;
+      }
+
+      .star::before,
+      .star::after {
+        content: "";
+        position: absolute;
+        background: currentColor;
+      }
+
+      .star::before {
+        width: 2px;
+        height: 8px;
+        left: 3px;
+      }
+
+      .star::after {
+        width: 8px;
+        height: 2px;
+        top: 3px;
+      }
+
+      .s1 { top: 12%; left: 10%; animation-delay: -0.2s; }
+      .s2 { top: 20%; left: 28%; animation-delay: -0.8s; }
+      .s3 { top: 14%; left: 46%; animation-delay: -1.3s; }
+      .s4 { top: 25%; left: 67%; animation-delay: -0.4s; }
+      .s5 { top: 18%; left: 86%; animation-delay: -1.1s; }
+      .s6 { top: 42%; left: 18%; animation-delay: -0.7s; }
+      .s7 { top: 53%; left: 38%; animation-delay: -1.5s; }
+      .s8 { top: 47%; left: 59%; animation-delay: -0.1s; }
+      .s9 { top: 62%; left: 78%; animation-delay: -0.9s; }
+      .s10 { top: 74%; left: 12%; animation-delay: -1.6s; }
+      .s11 { top: 80%; left: 32%; animation-delay: -0.5s; }
+      .s12 { top: 71%; left: 51%; animation-delay: -1.0s; }
+      .s13 { top: 84%; left: 68%; animation-delay: -0.3s; }
+      .s14 { top: 76%; left: 88%; animation-delay: -1.4s; }
+
+      .nyan {
+        position: absolute;
+        top: 50%;
+        width: 292px;
+        transform: translate(-260px, -50%);
+        animation: fly-horizontal 7s linear infinite;
+      }
+
+      .nyan img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      @keyframes fly-horizontal {
+        from { transform: translate(-260px, -50%); }
+        to { transform: translate(calc(100vw + 30px), -50%); }
+      }
+
+      @keyframes twinkle {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0.35; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" aria-label="Nyan Cat flying from left to right on a blue background with stars">
+      <div class="stars" aria-hidden="true">
+        <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span>
+        <span class="star s4"></span><span class="star s5"></span><span class="star s6"></span>
+        <span class="star s7"></span><span class="star s8"></span><span class="star s9"></span>
+        <span class="star s10"></span><span class="star s11"></span><span class="star s12"></span>
+        <span class="star s13"></span><span class="star s14"></span>
+      </div>
+
+      <div class="nyan">
+        <img src="nyan-sprite.svg" alt="Animated Nyan Cat with rainbow trail" />
+      </div>
+    </main>
+  </body>
+</html>
