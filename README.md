@@ -12,3 +12,5 @@ Then open `http://localhost:8000`.
 
 
 Extra page: `http://localhost:8000/nyancat.html` (multiple cats in opposite directions).
+
+Vertical test page: `http://localhost:8000/nyancat-vertical.html` (cat moves top-to-bottom with rainbow from feet).
