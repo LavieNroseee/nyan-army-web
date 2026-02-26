@@ -61,6 +61,22 @@
   </defs>
   <rect id="background" width="100%" height="100%" fill="url('#BackgroundGradient')" />
 
+  <style>
+    #nyan-flight {
+      animation: nyan-fly 6s linear infinite;
+    }
+
+    @keyframes nyan-fly {
+      0% {
+        transform: translate(-230px, 0);
+      }
+
+      100% {
+        transform: translate(210px, 0);
+      }
+    }
+  </style>
+
   <use href="#sparkle" id="sparkle1">
     <animateMotion dur="0.77s" repeatCount="indefinite" path="M250 10 70 10" />
   </use>
@@ -85,6 +101,7 @@
   <use href="#sparkle" id="sparkle8">
     <animateMotion begin="0.28" dur="0.84s" repeatCount="indefinite" path="M250 73 70 73" />
   </use>
+  <g id="nyan-flight">
   <svg id="rainbow" y="58.5">
     <defs>
       <linearGradient id="RainbowGradient" gradientTransform="rotate(90)">
@@ -631,4 +648,5 @@
       </g>
     </g>
   </svg>
+  </g>
 </svg>
