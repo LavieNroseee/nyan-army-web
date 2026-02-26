@@ -32,40 +32,19 @@
         overflow: hidden;
       }
 
-      .sparkle-field .sparkle-frame6 {
-        animation: sparkle 0.42s linear 0.35s infinite;
-      }
-
-      .sparkle-field .sparkle-frame5 {
-        animation: sparkle 0.42s linear 0.28s infinite;
-      }
-
-      .sparkle-field .sparkle-frame4 {
-        animation: sparkle 0.42s linear 0.21s infinite;
-      }
-
-      .sparkle-field .sparkle-frame3 {
-        animation: sparkle 0.42s linear 0.14s infinite;
-      }
-
-      .sparkle-field .sparkle-frame2 {
-        animation: sparkle 0.42s linear 0.07s infinite;
-      }
-
-      .sparkle-field .sparkle-frame1 {
-        animation: sparkle 0.42s linear 0s infinite;
-      }
+      .sparkle-frame6 { animation: sparkle 0.42s linear 0.35s infinite; }
+      .sparkle-frame5 { animation: sparkle 0.42s linear 0.28s infinite; }
+      .sparkle-frame4 { animation: sparkle 0.42s linear 0.21s infinite; }
+      .sparkle-frame3 { animation: sparkle 0.42s linear 0.14s infinite; }
+      .sparkle-frame2 { animation: sparkle 0.42s linear 0.07s infinite; }
+      .sparkle-frame1 { animation: sparkle 0.42s linear 0s infinite; }
 
       @keyframes sparkle {
         0%,
-        16.666666% {
-          opacity: 1;
-        }
+        16.666666% { opacity: 1; }
 
         16.6666666%,
-        100% {
-          opacity: 0;
-        }
+        100% { opacity: 0; }
       }
 
       .nyan-run {
@@ -101,22 +80,19 @@
         opacity: 0.62;
       }
 
-      .sprite {
-        z-index: 5;
-      }
+      .sprite { z-index: 5; }
 
       @keyframes fly-horizontal {
         from { transform: translate(-380px, -50%); }
         to { transform: translate(calc(100vw + 30px), -50%); }
       }
-
     </style>
   </head>
   <body>
-    <main class="stage" aria-label="Nyan Cat flying from left to right on a blue background with stars">
-      <svg class="sparkle-field" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <main class="stage" aria-label="Nyan Cat flying from left to right on a blue background with animated stars">
+      <svg class="sparkle-field" viewBox="0 0 320 180" preserveAspectRatio="none" aria-hidden="true">
         <defs>
-          <g id="sparkle" transform="scale(0.42)" stroke="#d9f0ff">
+          <g id="sparkle" transform="scale(2)" stroke="#d9f0ff">
             <path class="sparkle-frame1" d="M3.5 0 v2 M7 3.5 h-2 M3.5 7 v-2 M0 3.5 h2 M3 3.5 h1" />
             <path class="sparkle-frame2" d="M3 0.5 h1 M5 1.5 h1 M6 3.5 h1 M5 5.5 h1 M3 6.5 h1 M1 5.5 h1 M0 3.5 h1 M1 1.5 h1" />
             <path class="sparkle-frame3" d="M3 0.5 h1 M6 3.5 h1 M3 6.5 h1 M0 3.5 h1" />
@@ -126,31 +102,14 @@
           </g>
         </defs>
 
-        <use href="#sparkle" x="8" y="12" />
-        <use href="#sparkle" x="22" y="18" />
-        <use href="#sparkle" x="36" y="10" />
-        <use href="#sparkle" x="52" y="16" />
-        <use href="#sparkle" x="67" y="12" />
-        <use href="#sparkle" x="82" y="18" />
-        <use href="#sparkle" x="93" y="11" />
-        <use href="#sparkle" x="13" y="33" />
-        <use href="#sparkle" x="27" y="41" />
-        <use href="#sparkle" x="45" y="35" />
-        <use href="#sparkle" x="61" y="42" />
-        <use href="#sparkle" x="77" y="36" />
-        <use href="#sparkle" x="90" y="44" />
-        <use href="#sparkle" x="9" y="56" />
-        <use href="#sparkle" x="24" y="64" />
-        <use href="#sparkle" x="40" y="58" />
-        <use href="#sparkle" x="58" y="66" />
-        <use href="#sparkle" x="73" y="59" />
-        <use href="#sparkle" x="88" y="67" />
-        <use href="#sparkle" x="14" y="79" />
-        <use href="#sparkle" x="30" y="86" />
-        <use href="#sparkle" x="47" y="81" />
-        <use href="#sparkle" x="64" y="88" />
-        <use href="#sparkle" x="80" y="83" />
-        <use href="#sparkle" x="94" y="90" />
+        <use href="#sparkle"><animateMotion dur="0.77s" repeatCount="indefinite" path="M250 10 70 10" /></use>
+        <use href="#sparkle"><animateMotion begin="0.2566s" dur="0.77s" repeatCount="indefinite" path="M255 23 65 23" /></use>
+        <use href="#sparkle"><animateMotion begin="0.5133s" dur="0.77s" repeatCount="indefinite" path="M260 36 60 36" /></use>
+        <use href="#sparkle"><animateMotion begin="0.1283s" dur="0.77s" repeatCount="indefinite" path="M260 130 60 130" /></use>
+        <use href="#sparkle"><animateMotion begin="0.385s" dur="0.77s" repeatCount="indefinite" path="M255 143 65 143" /></use>
+        <use href="#sparkle"><animateMotion begin="0.6416s" dur="0.77s" repeatCount="indefinite" path="M250 166 70 166" /></use>
+        <use href="#sparkle"><animateMotion dur="0.84s" repeatCount="indefinite" path="M250 105 70 105" /></use>
+        <use href="#sparkle"><animateMotion begin="0.28s" dur="0.84s" repeatCount="indefinite" path="M250 73 70 73" /></use>
       </svg>
 
       <div class="nyan-run">
