@@ -1,6 +1,6 @@
 # nyan-army-web
 
-Small Nyan Cat animation crossing from left to right over a full-page blue background (`100vh`).
+Small Nyan Cat + rainbow animation moving from left to right over a full-page blue background, with stars distributed across the whole page.
 
 ## Run locally
 
