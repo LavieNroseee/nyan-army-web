@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyan Army Web</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        overflow: hidden;
+        background: #22497b;
+      }
+
+      .stage {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .nyan {
+        position: absolute;
+        top: 50%;
+        width: 230px;
+        transform: translate(-260px, -50%);
+        animation: fly-horizontal 7s linear infinite;
+      }
+
+      .nyan img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      @keyframes fly-horizontal {
+        0% {
+          transform: translate(-260px, -50%);
+        }
+
+        100% {
+          transform: translate(calc(100vw + 30px), -50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" aria-label="Nyan Cat flying from left to right on a blue background">
+      <div class="nyan">
+        <img src="nyancat.svg" alt="Animated Nyan Cat" />
+      </div>
+    </main>
+  </body>
+</html>
