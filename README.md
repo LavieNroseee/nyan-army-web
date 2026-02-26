@@ -1,2 +1,3 @@
 # nyan-army-web
-Animated multi Nyan Cat canvas background
+
+Animated Nyan Cat SVG using the original cat artwork, now moving from one side to the other while keeping its rainbow trail.
