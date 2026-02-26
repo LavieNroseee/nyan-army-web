@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyan Vertical Test</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; }
+      body { overflow: hidden; background: #22497b; }
+
+      .stage {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .vertical-run {
+        position: absolute;
+        left: 50%;
+        width: 120px;
+        height: 420px;
+        transform: translate(-50%, -180px);
+        animation: fly-vertical 7.2s linear infinite;
+      }
+
+      .rainbow {
+        position: absolute;
+        left: 50%;
+        bottom: 66px;
+        transform: translateX(-50%);
+        width: 54px;
+        height: 270px;
+        background: linear-gradient(
+          90deg,
+          #ff1b00 0%, #ff1b00 16.66%,
+          #ff9b01 16.67%, #ff9b01 33.33%,
+          #fdef01 33.34%, #fdef01 50%,
+          #20db01 50.01%, #20db01 66.66%,
+          #008afc 66.67%, #008afc 83.33%,
+          #6d3ffc 83.34%, #6d3ffc 100%
+        );
+        animation: trail-jitter 0.42s linear infinite;
+      }
+
+      .rainbow.fade-1 { height: 315px; opacity: 0.45; }
+      .rainbow.fade-2 { height: 360px; opacity: 0.22; }
+
+      .cat {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 110px;
+        height: auto;
+      }
+
+      @keyframes fly-vertical {
+        from { transform: translate(-50%, -180px); }
+        to { transform: translate(-50%, calc(100vh + 80px)); }
+      }
+
+      @keyframes trail-jitter {
+        0%, 49.99% { transform: translateX(-50%); }
+        50%, 100% { transform: translateX(calc(-50% - 4px)); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" aria-label="Nyan Cat vertical movement test with rainbow from feet">
+      <div class="vertical-run">
+        <div class="rainbow fade-2" aria-hidden="true"></div>
+        <div class="rainbow fade-1" aria-hidden="true"></div>
+        <div class="rainbow" aria-hidden="true"></div>
+        <img class="cat" src="nyan-cat-only.svg" alt="Nyan Cat" />
+      </div>
+    </main>
+  </body>
+</html>
