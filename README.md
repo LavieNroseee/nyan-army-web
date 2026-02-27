@@ -1,20 +1,18 @@
 # nyan-army-web
 
-Proyecto de demos de Nyan Cat (horizontal, vertical, combinado y colisiones) migrado a **Vite** para desarrollo y build estático.
+Proyecto de demos de Nyan Cat (horizontal, vertical, combinado y colisiones) montado sobre **Vite**.
 
 ## Requisitos
 
 - Node.js 18+
 - npm
 
-## Desarrollo local (Vite)
+## Desarrollo local
 
 ```bash
 npm install
 npm run dev
 ```
-
-Abre la URL que te muestre Vite (normalmente `http://localhost:5173`).
 
 ## Build de producción
 
@@ -32,18 +30,62 @@ npm run preview
 - `/nyancat-collision.html` → colisiones múltiples
 - `/nyancat-collision-diagonal.html` → colisiones con cola diagonal
 
-## Migración a tu nuevo repositorio
+---
 
-Cuando crees el repo nuevo en GitHub, desde esta carpeta puedes hacer:
+## Si vas a crear **un proyecto nuevo en Vite** y copiar esta funcionalidad
 
-```bash
-git remote add origin <TU_URL_DEL_REPO>
-git push -u origin work
-```
-
-Si prefieres usar `main` en lugar de `work`:
+### 1) Crear proyecto base
 
 ```bash
-git branch -M main
-git push -u origin main
+npm create vite@latest nyan-army-web -- --template vanilla
+cd nyan-army-web
+npm install
 ```
+
+### 2) Copiar estos archivos en la **raíz** del nuevo proyecto
+
+Copia desde este repo al nuevo proyecto los siguientes archivos:
+
+- `index.html`
+- `nyancat.html`
+- `nyancat-vertical.html`
+- `nyancat-combined.html`
+- `nyancat-collision.html`
+- `nyancat-collision-diagonal.html`
+- `nyan-sprite.svg`
+- `nyan-trail.svg`
+- `nyan-cat-only.svg`
+- `nyancat.svg`
+- `vite.config.js`
+
+> Importante: conserva exactamente esos nombres y ubicación (raíz), porque las páginas referencian SVGs con rutas relativas.
+
+### 3) Reemplazar `package.json`
+
+Usa este bloque mínimo:
+
+```json
+{
+  "name": "nyan-army-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
+```
+
+### 4) Instalar y ejecutar
+
+```bash
+npm install
+npm run dev
+```
+
+Con eso tendrás la misma funcionalidad en tu repo nuevo.
