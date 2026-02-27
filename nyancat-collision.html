@@ -77,7 +77,7 @@
       </svg>
 
       <div id="cat-layer"></div>
-          <div style="position:absolute;left:12px;bottom:10px;color:#cfe8ff;font:14px monospace;opacity:.85;">Cats: 6 (wall + cat collisions)</div>
+          <div id="stats" style="position:absolute;left:12px;bottom:10px;color:#cfe8ff;font:14px monospace;opacity:.85;">Cats: 6 | collisions: 0</div>
     </main>
 
     <template id="cat-template">
@@ -90,9 +90,11 @@
     </template>
 
     <script>
-      const CAT = { w: 220, h: 58, r: 34 };
+      const CAT = { w: 220, h: 58 };
       const catLayer = document.getElementById('cat-layer');
       const catTemplate = document.getElementById('cat-template');
+      const stats = document.getElementById('stats');
+      let collisionCount = 0;
 
       const cats = [
         { x: 80, y: 70, vx: 3.1, vy: 2.0 },
@@ -129,39 +131,43 @@
       }
 
       function resolveCatCollision(a, b) {
-        const ax = a.x + CAT.w * 0.56;
-        const ay = a.y + CAT.h * 0.5;
-        const bx = b.x + CAT.w * 0.56;
-        const by = b.y + CAT.h * 0.5;
+        const left = Math.max(a.x, b.x);
+        const right = Math.min(a.x + CAT.w, b.x + CAT.w);
+        const top = Math.max(a.y, b.y);
+        const bottom = Math.min(a.y + CAT.h, b.y + CAT.h);
 
-        const dx = bx - ax;
-        const dy = by - ay;
-        const distSq = dx * dx + dy * dy;
-        const minDist = CAT.r * 2;
+        const overlapX = right - left;
+        const overlapY = bottom - top;
 
-        if (distSq === 0 || distSq >= minDist * minDist) return;
+        if (overlapX <= 0 || overlapY <= 0) return false;
 
-        const dist = Math.sqrt(distSq);
-        const nx = dx / dist;
-        const ny = dy / dist;
+        if (overlapX < overlapY) {
+          const push = overlapX / 2;
+          if (a.x < b.x) {
+            a.x -= push;
+            b.x += push;
+          } else {
+            a.x += push;
+            b.x -= push;
+          }
+          const avx = a.vx;
+          a.vx = b.vx;
+          b.vx = avx;
+        } else {
+          const push = overlapY / 2;
+          if (a.y < b.y) {
+            a.y -= push;
+            b.y += push;
+          } else {
+            a.y += push;
+            b.y -= push;
+          }
+          const avy = a.vy;
+          a.vy = b.vy;
+          b.vy = avy;
+        }
 
-        const overlap = minDist - dist;
-        a.x -= nx * overlap * 0.5;
-        a.y -= ny * overlap * 0.5;
-        b.x += nx * overlap * 0.5;
-        b.y += ny * overlap * 0.5;
-
-        const rvx = a.vx - b.vx;
-        const rvy = a.vy - b.vy;
-        const velAlongNormal = rvx * nx + rvy * ny;
-
-        if (velAlongNormal > 0) return;
-
-        const impulse = -2 * velAlongNormal / 2;
-        a.vx += impulse * nx;
-        a.vy += impulse * ny;
-        b.vx -= impulse * nx;
-        b.vy -= impulse * ny;
+        return true;
       }
 
       function render(cat) {
@@ -178,7 +184,7 @@
 
         for (let i = 0; i < cats.length; i += 1) {
           for (let j = i + 1; j < cats.length; j += 1) {
-            resolveCatCollision(cats[i], cats[j]);
+            if (resolveCatCollision(cats[i], cats[j])) collisionCount += 1;
           }
         }
 
@@ -187,6 +193,7 @@
           render(cat);
         }
 
+        stats.textContent = `Cats: ${cats.length} | collisions: ${collisionCount}`;
         requestAnimationFrame(tick);
       }
 
