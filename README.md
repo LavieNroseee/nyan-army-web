@@ -1,19 +1,49 @@
 # nyan-army-web
 
-Small Nyan Cat + rainbow animation moving from left to right over a full-page blue background, with a longer fading trail and animated original sparkle-style stars.
+Proyecto de demos de Nyan Cat (horizontal, vertical, combinado y colisiones) migrado a **Vite** para desarrollo y build estático.
 
-## Run locally
+## Requisitos
+
+- Node.js 18+
+- npm
+
+## Desarrollo local (Vite)
 
 ```bash
-python -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Abre la URL que te muestre Vite (normalmente `http://localhost:5173`).
 
+## Build de producción
 
-Extra page: `http://localhost:8000/nyancat.html` (multiple cats in opposite directions).
+```bash
+npm run build
+npm run preview
+```
 
-Vertical test page: `http://localhost:8000/nyancat-vertical.html` (cat moves top-to-bottom with rainbow from feet).
-Combined test page: `http://localhost:8000/nyancat-combined.html` (horizontal + vertical cats with stars).
-Collision test page: `http://localhost:8000/nyancat-collision.html` (6 cats colliding with walls and each other).
-Collision diagonal trail test: `http://localhost:8000/nyancat-collision-diagonal.html` (ping-pong bounce with diagonal tail).
+## Páginas disponibles
+
+- `/` → demo principal
+- `/nyancat.html` → varios gatos en direcciones opuestas
+- `/nyancat-vertical.html` → movimiento vertical
+- `/nyancat-combined.html` → horizontal + vertical
+- `/nyancat-collision.html` → colisiones múltiples
+- `/nyancat-collision-diagonal.html` → colisiones con cola diagonal
+
+## Migración a tu nuevo repositorio
+
+Cuando crees el repo nuevo en GitHub, desde esta carpeta puedes hacer:
+
+```bash
+git remote add origin <TU_URL_DEL_REPO>
+git push -u origin work
+```
+
+Si prefieres usar `main` en lugar de `work`:
+
+```bash
+git branch -M main
+git push -u origin main
+```
